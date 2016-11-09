@@ -1,36 +1,34 @@
 Mocha Tap Reporter
 ======================
 
-This reporter generate TAP format report that works perfectly with Jenkins TAP plugin.
+This reporter generates a TAP formatted report. It was forked from its original
+author to ensure compatibility with Komodo IDE as well as to add suites to the
+output.
 
 Usage
 -------
 ```
-npm install mocha-tap-reporter
-mocha --reporter mocha-tap-reporter
+npm install mocha-ko-tap-reporter
+mocha --reporter mocha-ko-tap-reporter
 ```
 
 Example Output
 -------------
 ```
-1..3
-ok 1 this is test1
-not ok 2 this is test2
-#  AssertionError: 1 == 2
-#      at Context.<anonymous> (/Volumes/Data/workspace/tests/test2.js:10:10)
-#      at Test.Runnable.run (/Volumes/Data/workspace/tests/node_modules/mocha/lib/runnable.js:196:15)
-#      at Runner.runTest (/Volumes/Data/workspace/tests/node_modules/mocha/lib/runner.js:373:10)
-ok 3 this is test3 # SKIP
-# tests 3
-# pass 1
-# fail 1
-# skip 1
+$ mocha --reporter mocha-ko-tap-reporter
+ok 1  should work
+Mocha .............................................
+ok 1 Mocha should not output colors to pipe
+1..1
+"grep" option .....................................
+ok 1 Mocha "grep" option should add a RegExp to the mocha.options object
+ok 2 Mocha "grep" option should convert string to a RegExp
+1..2
+"fgrep" option ....................................
+ok 1 Mocha "fgrep" option should escape and convert string to a RegExp
+1..1
+# tests 4
+# pass 4
+# fail 0
+# skip 0
 ```
-
-Jenkins TAP Plugin
--------------
-If you use Jenkins TAP plugin together, make sure the following option is enabled in your Jenkins jobs:
-```
-	Post-build Actions -> Publish TAP Results -> Include comment diagnostics (#) in the results table
-```
-Then you will find error stacktrace are avaiable in "TAP Extended Test Result".
