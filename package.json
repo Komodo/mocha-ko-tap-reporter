@@ -1,6 +1,6 @@
 {
   "name": "mocha-tap-reporter",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "A mocha TAP reporter, modified for Komodo IDE's needs, but still fully TAP compatible. Original author is Yin Li.",
   "main": "index.js",
   "directories": "./lib",
